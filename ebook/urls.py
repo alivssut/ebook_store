@@ -23,6 +23,6 @@ urlpatterns = [
     path('auth/', include('rest_framework.urls')),
     path("api/v1/rest-auth/", include("dj_rest_auth.urls")),
     path("api/v1/rest-auth/registration/", include("dj_rest_auth.registration.urls")),
-    path('api-token-auth/', views.obtain_auth_token, name="api-token-auth")
-    path('api/v1/ebboks/', include("books.urls"))
+    path('api-token-auth/', views.obtain_auth_token, name="api-token-auth"),
+    path('api/v1/ebboks/', include("books.urls")),
 ]
