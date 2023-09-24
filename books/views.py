@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Ebook
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from serializers import EbookSerializer
+from .serializers import EbookSerializer
 from rest_framework import generics
 
 # Create your views here.
