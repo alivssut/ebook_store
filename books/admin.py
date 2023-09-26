@@ -5,3 +5,4 @@ from . import models
 admin.site.register(models.Author)
 admin.site.register(models.Ebook)
 admin.site.register(models.Category)
+admin.site.register(models.Comment)

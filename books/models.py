@@ -1,5 +1,5 @@
 from django.db import models
-
+from accounts.models import User
 # Create your models here.
 
 # author model
@@ -63,3 +63,19 @@ class Ebook(models.Model):
         
     def __str__(self):
         return self.title
+    
+# comment model
+class Comment(models.Model):
+    body = models.TextField(verbose_name='Body')
+    ebook = models.ForeignKey(Ebook, on_delete=models.CASCADE, related_name='comments')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=False, verbose_name='IsActive')
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
+
+    def __str__(self):
+        return 'created by {} at {}'.format(self.owner, self.created)
