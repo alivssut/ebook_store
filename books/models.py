@@ -1,5 +1,6 @@
 from django.db import models
 from accounts.models import User
+from .managers import EbookManager, CommentManager
 # Create your models here.
 
 # author model
@@ -13,7 +14,7 @@ class Author(models.Model):
     date_of_death = models.DateField(null=True, blank=True, verbose_name='DateOfDeath')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    
+        
     class Meta:
         verbose_name = 'Author'
         verbose_name_plural = 'Authors'
@@ -57,6 +58,8 @@ class Ebook(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    objects = EbookManager()
+
     class Meta:
         verbose_name = 'EBook'
         verbose_name_plural = 'EBooks'
@@ -73,6 +76,7 @@ class Comment(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    objects = CommentManager()
     class Meta:
         verbose_name = 'Comment'
         verbose_name_plural = 'Comments'

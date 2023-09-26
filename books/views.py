@@ -9,11 +9,10 @@ from rest_framework.authentication import TokenAuthentication, SessionAuthentica
 
 # ebooks list view
 class EbookListView(generics.ListAPIView):
-    queryset = Ebook.objects.all()
     serializer_class = EbookSerializer
     permission_classes = [IsAuthenticated,]
     authentication_classes = [SessionAuthentication, TokenAuthentication]
-    
+    queryset = Ebook.objects.all_ebooks(active=True)
 
 # ebook detail view
 class EbookDetailView(generics.RetrieveAPIView):
@@ -22,4 +21,4 @@ class EbookDetailView(generics.RetrieveAPIView):
     permission_classes = [IsAuthenticated,]
     lookup_url_kwarg  = 'slug'
     lookup_field = 'slug'
-    queryset = Ebook.objects.all()
+    queryset = Ebook.objects.all_ebooks(active=True)
